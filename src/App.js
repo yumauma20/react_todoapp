@@ -39,7 +39,6 @@ function App() {
     currentId += 1
   }
 
-
   return (
     <div className="App">
       <div className="container">
@@ -61,32 +60,12 @@ function App() {
               type="checkbox"
             />
             <label className="todo-text">
-              メールの確認
-            </label>
-          </li>
-
-          <li className="todo">
-            <input
-              className="todo-checkbox"
-              type="checkbox"
-            />
-            <label className="todo-text">
-              サーバーの契約
-            </label>
-          </li>
-
-          <li className="todo">
-            <input
-              className="todo-checkbox"
-              type="checkbox"
-            />
-            <label className="todo-text">
-              お問い合わせ機能の作成
+              テキストが入る場所
             </label>
           </li>
         </ul>
       </div>
-    </div>
+      </div>
     </div>
   );
 }
