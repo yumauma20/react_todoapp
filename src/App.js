@@ -4,7 +4,7 @@ import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 import "./TodoList.css"
 import './App.css';
 
-// todoを特定するための一意なキーに使用する
+//todoを特定するための一意なキーに使用する
 let currentId = 0
 
 function App() {
@@ -39,13 +39,41 @@ function App() {
     currentId += 1
   }
 
+  //checkboxのアクティブをトグルさせる関数
+  const toggleActive = (id) => {
+    //todosからidが一致したtodoのアクティブ状態を反転させて返す
+    const filtedTodos = todos.map(todo => {
+      if(todo.id === id) {
+        return {
+          ...todo,
+          checked: !todo.checked
+        }
+      }
+      return todo
+    })
+
+    //新しいtodosをセットする
+    setTodos(filtedTodos)
+  }
+
+  //checkboxがアクティブの要素だけ全て削除する
+  const removeCheckedTodos = () => {
+    //checkboxがアクティブの要素以外のtodosのコピーを返す
+    const filtedTodos = todos.filter(todo => !todo.checked)
+    
+    //新しいtodosをセットする
+    setTodos(filtedTodos)
+  }
+
   return (
     <div className="App">
       <div className="container">
       <h1 className="title">Example Todo</h1>
       <ul className="tools">
         <li className="tool">
-          <FontAwesomeIcon className="delete-all-icon" icon={faTrashAlt} />
+          <button onClick={removeCheckedTodos}>
+            <FontAwesomeIcon className="delete-all-icon" icon={faTrashAlt}/>
+          </button>
         </li>
       </ul>
       <div className="todo-list">
@@ -60,6 +88,7 @@ function App() {
               <input
                 className="todo-checkbox"
                 type="checkbox"
+                onChange={() => toggleActive(data.id)}
               />
               <label className="todo-text">
                 {data.text}
