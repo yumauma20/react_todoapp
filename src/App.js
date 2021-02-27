@@ -60,7 +60,7 @@ function App() {
   const removeCheckedTodos = () => {
     //checkboxがアクティブの要素以外のtodosのコピーを返す
     const filtedTodos = todos.filter(todo => !todo.checked)
-    
+
     //新しいtodosをセットする
     setTodos(filtedTodos)
   }
@@ -84,10 +84,11 @@ function App() {
         <ul className="todos">
         {todos.map((data) => {
           return (
-            <li className="todo">
+            <li className="todo" key={data.id}>
               <input
                 className="todo-checkbox"
                 type="checkbox"
+                value={data.checked}
                 onChange={() => toggleActive(data.id)}
               />
               <label className="todo-text">
