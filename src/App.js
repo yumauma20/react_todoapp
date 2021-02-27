@@ -50,7 +50,7 @@ function App() {
       </ul>
       <div className="todo-list">
         <form className="todos-header">
-          <input className="todos-header-input" type="text" onChange={onChangeHandler}/>
+          <input className="todos-header-input" type="text" value={text} onChange={onChangeHandler}/>
           <input className="todos-header-plus" type="submit" value="＋" onClick={pushTodo}/>
         </form>
         {/* ループする場所 */}
