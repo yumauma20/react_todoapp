@@ -53,19 +53,21 @@ function App() {
           <input className="todos-header-input" type="text" value={text} onChange={onChangeHandler}/>
           <input className="todos-header-plus" type="submit" value="＋" onClick={pushTodo}/>
         </form>
-        {/* ループする場所 */}
         <ul className="todos">
-          <li className="todo">
-            <input
-              className="todo-checkbox"
-              type="checkbox"
-            />
-            <label className="todo-text">
-              テキストが入る場所
-            </label>
-          </li>
+        {todos.map((data) => {
+          return (
+            <li className="todo">
+              <input
+                className="todo-checkbox"
+                type="checkbox"
+              />
+              <label className="todo-text">
+                {data.text}
+              </label>
+            </li>
+          )
+        })}
         </ul>
-        {/* ループ終了 */}
       </div>
       </div>
     </div>
